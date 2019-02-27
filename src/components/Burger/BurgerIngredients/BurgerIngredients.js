@@ -1,14 +1,14 @@
 import React from 'react';
-import Aux from '../../hoc/Aux';
-import classes from './BurgerIngredients.model.css';
+import classes from './BurgerIngredients.module.css';
+import PropTypes from 'prop-types';
 
 const burgerIngredients = (props) => {
-    let ingredient;
+    let ingredient = null;
     switch (props.type) {
-        case 'bread-bottom':
+        case ('bread-bottom'):
             ingredient = <div className={classes.BreadBottom}></div>
             break;
-        case 'bread-top':
+        case ('bread-top'):
             ingredient =
                 <div className={classes.BreadTop}>
                     <div className={classes.Seeds1}></div>
@@ -28,9 +28,14 @@ const burgerIngredients = (props) => {
             ingredient = <div className={classes.Bacon}></div>
             break;
         default:
-            ingredient = null;
+            ingredient = <div>Error</div>;
+            break;
     }
     return ingredient;
+}
+
+burgerIngredients.propTypes = {
+    type: PropTypes.string.isRequired
 }
 
 export default burgerIngredients;
